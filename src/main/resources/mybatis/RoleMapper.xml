@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chn.modules.sys.mapper.RoleMapper">
+    <select id="getRoles" resultType="com.chn.modules.sys.bean.Role">
+        SELECT
+            a.id,a.name, a.role_type, a.data_scope
+        FROM
+            sys_role a
+        LEFT JOIN sys_user_role b ON a.id = b.role_id
+        WHERE
+            b.user_id = #{userId}
+    </select>
+</mapper>
